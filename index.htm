@@ -697,25 +697,18 @@
             submitButton.textContent = 'Enviando, aguarde...';
 
             // ATENÇÃO: Cole sua URL do Power Automate aqui
-            const flowUrl = "https://defaultaf73075ee5864d09b8b3d44b758089.52.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3a0d140e5acc4e259dc83b36923f117c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Qn_YOdIgc7b7EKv-BVpEIjETlCiBJu4a-E5mR2ccmdo"; 
+            const flowUrl = "COLE_AQUI_A_URL_DO_SEU_FLUXO_POWER_AUTOMATE"; 
 
-if (flowUrl === "https://defaultaf73075ee5864d09b8b3d44b758089.52.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3a0d140e5acc4e259dc83b36923f117c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Qn_YOdIgc7b7EKv-BVpEIjETlCiBJu4a-E5mR2ccmdo") {
-    alert("Erro: A URL do fluxo (flowUrl) não foi configurada no script do HTML.");
-    submitButton.disabled = false;
-    submitButton.textContent = 'Enviar para Lançamento';
-    return;
-}
-            
-                      // 1. Pegar a lista de arquivos
+            if (flowUrl === "COLE_AQUI_A_URL_DO_SEU_FLUXO_POWER_AUTOMATE") {
+                alert("Erro: A URL do fluxo (flowUrl) não foi configurada no script do HTML.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar para Lançamento';
+                return;
+            }
+
+            // 1. Pegar a lista de arquivos
             const fileInput = document.getElementById('anexoNF');
             const files = fileInput.files;
-            const fileInput = document.getElementById('anexoNF');
-const files = fileInput.files;
-
-alert("Número de arquivos selecionados: " + files.length); // <-- ADICIONE ESTA LINHA
-
-if (files.length === 0) {
-//... o resto do script continua
 
             if (files.length === 0) {
                 alert('Por favor, anexe pelo menos um arquivo da NF.');
