@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -93,7 +92,6 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Formulário de Lançamento de Nota Fiscal</h1>
         <p>Preencha os campos abaixo para enviar a NF para lançamento pelo CPD.</p>
@@ -102,8 +100,7 @@
 
             <fieldset>
                 <legend>1. Informações Gerais</legend>
-                
-                <div class="form-group">
+                                <div class="form-group">
                     <label for="codigoRegistro">Código de Registro (Automático):</label>
                     <input type="text" id="codigoRegistro" name="codigoRegistro" readonly>
                 </div>
@@ -158,14 +155,33 @@
 
             <fieldset>
                 <legend>3. Detalhes Específicos</legend>
+
                 <div id="camposDevolucao" class="campos-especificos">
                     <div class="form-group">
                         <label for="motivoDevolucao">Motivo da Devolução:</label>
                         <select id="motivoDevolucao" name="motivoDevolucao">
                             <option value="">-- Selecione o motivo --</option>
-                            <option value="Cliente não Aceitou">1 - Cliente não Aceitou</option>
-                            <option value="Cliente Fechado">2 - Cliente Fechado</option>
-                            <option value="Produto faltando">3 - Produto faltando</option>
+                            <option value="MERCADORIA FALTOU NA CARGA">MERCADORIA FALTOU NA CARGA</option>
+                            <option value="CLIENTE NAO FEZ PEDIDO">CLIENTE NAO FEZ PEDIDO</option>
+                            <option value="DIVERGENCIA NO PRECO OU PRAZO">DIVERGENCIA NO PRECO OU PRAZO</option>
+                            <option value="PEDIDO A MAIOR OU MENOR - QUAN">PEDIDO A MAIOR OU MENOR - QUAN</option>
+                            <option value="CLIENTE NAO ACEITOU OU DESISTI">CLIENTE NAO ACEITOU OU DESISTI</option>
+                            <option value="PRODUTO NAO CADASTRADO NO CLIE">PRODUTO NAO CADASTRADO NO CLIE</option>
+                            <option value="MERCADORIA AVARIADA">MERCADORIA AVARIADA</option>
+                            <option value="SUBSTITUICAO DE PRODUTOS NO PE">SUBSTITUICAO DE PRODUTOS NO PE</option>
+                            <option value="DUPLICIDADE DE PEDIDO - MESMO">DUPLICIDADE DE PEDIDO - MESMO</option>
+                            <option value="DEMORA NA ENTREGA">DEMORA NA ENTREGA</option>
+                            <option value="ERRO DE FATURAMENTO">ERRO DE FATURAMENTO</option>
+                            <option value="CLIENTE NAO TEM PIX">CLIENTE NAO TEM PIX</option>
+                            <option value="FALTOU A BONIFICACAO">FALTOU A BONIFICACAO</option>
+                            <option value="PEDIDO TROCADO">PEDIDO TROCADO</option>
+                            <option value="DIVERGENCIA NO PORTADOR">DIVERGENCIA NO PORTADOR</option>
+                            <option value="CLIENTE TROCADO">CLIENTE TROCADO</option>
+                            <option value="FALTOU A TROCA">FALTOU A TROCA</option>
+                            <option value="CLIENTE FECHADO">CLIENTE FECHADO</option>
+                            <option value="FORA DE ROTA">FORA DE ROTA</option>
+                            <option value="NAO AUTORIZADO ENTREGAR PELO F">NAO AUTORIZADO ENTREGAR PELO F</option>
+                            <option value="MERCADORIA DE TROCA/IMPROPRIA">MERCADORIA DE TROCA/IMPROPRIA</option>
                         </select>
                     </div>
                 </div>
@@ -175,6 +191,7 @@
                         <textarea id="authTroca" name="authTroca"></textarea>
                     </div>
                 </div>
+
                 <div id="camposMerchan" class="campos-especificos">
                     <div class="form-group">
                         <label for="codigosMerchan">Código dos Itens (Separar por vírgula ou um por linha):</label>
@@ -183,12 +200,10 @@
                 </div>
 
                 <div id="camposAdm" class="campos-especificos">
-    
-    <div class="form-group">
+        <div class="form-group">
         <label for="operacaoFiscal">Operação Fiscal (digite o código ou nome para buscar):</label>
         <input type="text" id="operacaoFiscal" name="operacaoFiscal" list="listaOperacoesFiscais" placeholder="Digite o código (ex: 1.96.10) ou nome...">
     </div>
-
     <div class="form-group">
         <label for="descCoordenador">Descrição para Coordenador (Orçamento):</label>
         <textarea id="descCoordenador" name="descCoordenador" placeholder="Descreva os detalhes do orçamento para o coordenador (o CPD fará o link)..."></textarea>
@@ -499,7 +514,7 @@
         <option value="2.99.22 Amostra Gratis"></option>
         <option value="2.99.24 Compras De Bens Para Comodato"></option>
         <option value="2.99.25 Compra Pallet Unidades"></option>
-        <option value="2.99.26 Remessa Importacao Robo"></option>
+        <option value"2.99.26 Remessa Importacao Robo"></option>
         <option value="2.99.31 Energia Eletrica"></option>
         <option value="2.99.33 Compras Promocao De Vendas"></option>
         <option value="2.99.35 Manutencao de Frota"></option>
@@ -641,8 +656,8 @@
             </fieldset>
 
             <button type="submit" class="btn-submit">Enviar para Lançamento</button>
-
         </form>
+
     </div>
 
     <script>
@@ -691,7 +706,7 @@
         const form = document.getElementById('formNF');
         form.addEventListener('submit', async function(e) {
             e.preventDefault(); 
-
+            
             const submitButton = form.querySelector('.btn-submit');
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando, aguarde...';
@@ -750,10 +765,11 @@
                     unidade: document.getElementById('unidade').value,
                     numeroNF: document.getElementById('numeroNF').value,
                     tipoNF: document.getElementById('tipoNF').value,
+                    
                     motivoDevolucao: document.getElementById('motivoDevolucao').value,
                     authTroca: document.getElementById('authTroca').value,
                     codigosMerchan: document.getElementById('codigosMerchan').value,
-                    
+                                        
                     // CAMPOS NOVOS ADICIONADOS AQUI
                     operacaoFiscal: document.getElementById('operacaoFiscal').value,
                     descCoordenador: document.getElementById('descCoordenador').value,
@@ -774,6 +790,7 @@
                     form.reset(); 
                     submitButton.disabled = false;
                     submitButton.textContent = 'Enviar para Lançamento';
+                    // Re-gera o código de registro
                     document.dispatchEvent(new Event('DOMContentLoaded')); 
                 } else {
                     throw new Error('Houve um erro ao enviar. Tente novamente.');
